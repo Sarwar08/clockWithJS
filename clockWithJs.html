@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #date{
+            font-size: 20px;
+            color: rgb(255, 0, 0);
+            background-color: bisque;
+            text-align: center;
+            width: 300px;
+            border: 3px solid saddlebrown;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 50px;
+        }
+        #clock{
+            font-size: 50px;
+            color: rgb(255, 0, 0);
+            background-color: bisque;
+            text-align: center;
+            width: 300px;
+            border: 3px solid saddlebrown;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 50px;
+        }
+        #calender{
+            font-size: 50px;
+            color: rgb(255, 0, 0);
+            background-color: bisque;
+            text-align: center;
+            width: 300px;
+            border: 3px solid saddlebrown;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "date"></div>
+    <div id = "clock"></div>
+    <div id = "calender"></div>
+
+    
+    <script>
+
+        document.getElementById('date').innerHTML = Date();
+
+            setInterval(showTime, 1000);
+    
+            function showTime() {
+                let time = new Date();
+                let hour = time.getHours();
+                let minute = time.getMinutes();
+                let second = time.getSeconds();
+                let am_pm = "AM";
+    
+                if (hour > 12){
+                    hour -= 12;
+                    am_pm = "PM";
+                }
+                if (hour == 12){
+                    am_pm = "PM";
+                }
+                if(hour == 0){
+                    hour = 12;
+                    am_pm = "AM";
+                }
+    
+                hour = hour < 10 ? "0" + hour : hour;
+                minute = minute < 10 ? "0" + minute : minute;
+                second = second < 10 ? "0" + second : second;
+    
+                document.getElementById('clock').innerHTML = 
+                hour + ":" + minute + ":" + second + " " + am_pm;
+            }
+
+            setInterval(showDate, 1000);
+
+            function showDate(){
+                let date = new Date();
+                let day = date.getDate();
+                let month = date.getMonth() + 1;
+                let year = date.getFullYear();
+
+                document.getElementById('calender').innerHTML = 
+                day + "/" + month + "/" + year;
+            }
+
+    </script>
+   
+</body>
+</html>
